@@ -50,4 +50,8 @@ router.post('/adduser', function (req, res) {
   });
 });
 
+router.get('/blog', function (req, res) {
+  res.render('blog', {title: 'Блог'});
+});
+
 module.exports = router;
