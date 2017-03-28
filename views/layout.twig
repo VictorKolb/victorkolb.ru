@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>{{ title }}</title>
-    <meta charset="utf-8"/>
-    <meta content="width=device-width, initial-scale=1" name="viewport"/>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-    <link rel="shortcut icon" type="image/png" href="/img/favicon.ico">
-    <link href="https://fonts.googleapis.com/css?family=Lora&amp;subset=cyrillic" rel="stylesheet">
-  </head>
-  <body>
-    {% block body %}{% endblock %}
-  </body>
+<head>
+  <title>{{ title }}</title>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1" name="viewport"/>
+  <link rel='stylesheet' href='/stylesheets/style.css'/>
+  <link rel="shortcut icon" type="image/png" href="/img/favicon.ico">
+  <link href="https://fonts.googleapis.com/css?family=Lora&amp;subset=cyrillic" rel="stylesheet">
+</head>
+<body>
+{% include 'metrica.twig' %}
+{% block body %}{% endblock %}
+</body>
 </html>
