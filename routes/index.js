@@ -4,7 +4,7 @@ const typograf = require('node-artlebedev-typograf');
 
 /* GET home page. */
 router.get('/', (req, res, next) => {
-  res.render('index', {title: 'Пишу в&nbsp;&laquo;блог&raquo; всякое по&nbsp;музыке и&nbsp;вебу'});
+  res.render('index', {title: 'Я — Виктор Колб'});
 });
 
 router.get('/userlist', function (req, res) {

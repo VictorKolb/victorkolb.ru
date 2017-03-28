@@ -1,16 +1,15 @@
 {% extends 'layout.twig' %}
 
 {% block body %}
-  <div class="article_content">
-    <h2>{{ title }}</h2>
-    <p>
-      If you know me you would have known that I started learning about the web without having gone through any
-      computing courses in university previously. I didn’t dare to venture into server-side programming for a long time
-      because of my background.
-    </p>
-    <p>
-      I remember when I eventually picked up the courage to try, I had such a hard time understanding the documentations
-      for Express, MongDB and Node that I gave up.
-    </p>
-  </div>
+  <article class="main-page article_content">
+    <img src="/img/avatar.jpg" class="main-page__avatar" alt="">
+    <section class="main-page__text-container">
+      <h2>{{ title }}</h2>
+      <p>
+        Фронт-энд разработчик. Пишу в <a href="/blog">блог</a> всякое по музыке и вебу.
+        Работаю в <a href="http://codecode.ru/">Кодельной</a>.
+        Играю в <a href="https://vk.com/drawmysoul">Draw my Soul</a>.
+      </p>
+    </section>
+  </article>
 {% endblock %}
