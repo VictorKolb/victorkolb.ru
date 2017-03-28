@@ -1,0 +1,9 @@
+{% extends 'layout.twig' %}
+
+{% block body %}
+  <form name="adduser" method="post" action="/adduser">
+    <input type="text" placeholder="username" name="username">
+    <input type="text" placeholder="useremail" name="useremail">
+    <button type="submit">Submit</button>
+  </form>
+{% endblock %}
