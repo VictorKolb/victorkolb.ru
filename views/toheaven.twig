@@ -1,0 +1,11 @@
+{% extends 'layout.twig' %}
+
+{% block body %}
+  <article class="main-page article_content">
+    <form method="post" action="/users/login" name="myForm">
+      <input type="text" name="username">
+      <input type="text" name="password">
+      <input type="submit">
+    </form>
+  </article>
+{% endblock %}

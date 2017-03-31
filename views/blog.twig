@@ -3,10 +3,12 @@
 {% block body %}
   <article class="main-page article_content">
     <section class="main-page__text-container">
-      <h2>{{ title }}</h2>
-      <p>
-        Скоро доделаю и выложу. <a href="/">Назад</a>
-      </p>
+      {% for post in posts %}
+        <h2>{{ post.title }}</h2>
+        <p>
+          {{ post.body }}
+        </p>
+      {% endfor %}
     </section>
   </article>
 {% endblock %}
