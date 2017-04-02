@@ -11,7 +11,7 @@ function createPost(e) {
     body: data
   };
 
-  fetch('/users/login', options)
+  fetch('createpost', options)
     .then(data => {
       return data.text()
     }).then(data => {

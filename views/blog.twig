@@ -1,14 +1,22 @@
 {% extends 'layout.twig' %}
 
 {% block body %}
-  <article class="main-page article_content">
-    <section class="main-page__text-container">
-      {% for post in posts %}
+  <section class="blog__header">
+    <a href="/" class="blog__avatar"><img src="/img/avatar.jpg" alt="Фото"></a>
+    Заметки Виктора Колба
+  </section>
+  <article class="articles">
+    {% for post in posts %}
+      <section class="article__item">
         <h2>{{ post.title }}</h2>
         <p>
           {{ post.body }}
         </p>
-      {% endfor %}
-    </section>
+        <small>{{ post.posted_formatted }}</small>
+      </section>
+    {% endfor %}
   </article>
+  <footer class="blog__footer">
+    © Виктор Колб, 2017
+  </footer>
 {% endblock %}

@@ -1,27 +1,40 @@
 const mongoose = require('mongoose');
 const crypto = require('crypto');
-const User = require('./models/User.js');
+const UserModel = require('./models/User.js');
+const PostModel = require('./models/Post.js');
 
 mongoose.Promise = global.Promise;
-const db = mongoose.connect("mongodb://localhost/victorkolb");
+mongoose.connect("mongodb://localhost/victorkolb");
 
 // User API
 
-exports.createUser = function(userData) {
-  const user = {
-    username: userData.username,
-    password: hash(userData.password)
-  };
-  console.log(user)
-  return new User(user).save()
-};
+// exports.createUser = function(userData) {
+//   console.log(userData)
+//   const user = {
+//     username: userData.username,
+//     password: hash(userData.password)
+//   };
+//   return new UserModel(user).save()
+// };
 
 exports.getUser = function(id) {
-  return User.findOne(id)
+  return UserModel.findOne(id)
+};
+
+exports.getAllPosts = () => {
+  return PostModel.find()
+    .then(posts => Promise.resolve(posts))
+    .catch(error => Promise.reject("Не получилось"));
+};
+
+exports.createBlogPost = (post) => {
+  return PostModel.create(post)
+    .then(post => Promise.resolve(post))
+    .catch(error => Promise.reject("Не получилось"));
 };
 
 exports.checkUser = function(userData) {
-  return User
+  return UserModel
     .findOne({username: userData.username})
     .then(function(doc) {
       if (doc.password == hash(userData.password)) {

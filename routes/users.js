@@ -4,8 +4,6 @@ const api = require('../api.js');
 
 /* Создание пользователя */
 router.post('/login', function(req, res, next) {
-  console.log('session:', req.session)
-
   if (req.session.username) return res.json('Logged');
 
   api.checkUser(req.body)
@@ -24,16 +22,15 @@ router.post('/login', function(req, res, next) {
 
 });
 
-router.post('/create', function(req, res, next) {
-
-  api.createUser(req.body)
-    .then(function(result) {
-      console.log("User created")
-    })
-    .catch(function(err) {
-      console.log(err)
-    })
-});
+// router.post('/create', function(req, res, next) {
+//   api.createUser(req.body)
+//     .then(function(result) {
+//       console.log("User created")
+//     })
+//     .catch(function(err) {
+//       console.log(err)
+//     })
+// });
 
 router.post('/logout', function(req, res, next) {
   if (req.session.user) {
