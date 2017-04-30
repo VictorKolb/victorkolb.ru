@@ -48,6 +48,14 @@ exports.editPost = (id, new_post) => {
     .catch(error => Promise.reject("Не получилось"));
 };
 
+exports.deletePost = (id) => {
+  return PostModel.findByIdAndRemove(id)
+    .then(() => {
+      Promise.resolve()
+    })
+    .catch(error => Promise.reject("Не получилось"));
+};
+
 exports.createBlogPost = (post) => {
   return PostModel.create(post)
     .then(post => Promise.resolve(post))

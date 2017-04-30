@@ -16,7 +16,12 @@ router.get('/', function(req, res) {
 });
 
 router.post('/createpost', function(req, res) {
-  api.createBlogPost(req.body).then(res.redirect('/')).catch(error => res.json(res));
+  if (!req.session.user) {
+    res.redirect('/')
+  }
+  else {
+    api.createBlogPost(req.body).then(res.redirect('/blog')).catch(error => res.json(res));
+  }
 });
 
 router.get('/createpost', function(req, res) {
@@ -52,6 +57,19 @@ router.post('/edit/:id', (req, res) => {
   }
   else {
     api.editPost(req.params.id, req.body)
+      .then(() => {
+        res.redirect('/blog')
+      })
+      .catch((error) => console.log(error));
+  }
+});
+
+router.get('/delete/:id', (req, res) => {
+  if (!req.session.user) {
+    res.redirect('/')
+  }
+  else {
+    api.deletePost(req.params.id)
       .then(() => {
         res.redirect('/blog')
       })
