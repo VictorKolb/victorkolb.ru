@@ -1,0 +1,9 @@
+{% extends 'layout.twig' %}
+
+{% block body %}
+  <form name="myForm" action="/blog/edit/{{ post._id }}" method="post">
+    <input type="text" name="title" style="display: block; width: 200px; margin-bottom: 20px" value="{{ post.title }}">
+    <textarea name="body" id="" cols="30" rows="10" style="display: block; width: 100%; margin-bottom: 20px">{{ post.body }}</textarea>
+    <input type="submit" style="display: block; width: 200px; margin-bottom: 20px">
+  </form>
+{% endblock %}

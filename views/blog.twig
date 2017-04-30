@@ -13,6 +13,9 @@
           {{ post.body }}
         </p>
         <small>{{ post.posted_formatted }}</small>
+        {% if (admin) %}
+          <a href="/blog/edit/{{ post._id }}">редактировать</a>
+        {% endif %}
       </section>
     {% endfor %}
   </article>

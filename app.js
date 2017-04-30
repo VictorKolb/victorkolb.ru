@@ -39,7 +39,7 @@ app.use(session({
   store: new MongoStore({
     url: 'mongodb://localhost/victorkolb',
   })
-}))
+}));
 app.use(express.static(path.join(__dirname, 'public')));
 
 

@@ -27,6 +27,27 @@ exports.getAllPosts = () => {
     .catch(error => Promise.reject("Не получилось"));
 };
 
+exports.getPost = (id) => {
+  return PostModel.findById(id)
+    .then(post => Promise.resolve(post))
+    .catch(error => Promise.reject("Не получилось"));
+};
+
+exports.editPost = (id, new_post) => {
+  return PostModel.findById(id)
+    .then(post => {
+      post.title = new_post.title;
+      post.body = new_post.body;
+      post.save((err, post) => {
+        if (err) {
+          res.status(500).send(err)
+        }
+        Promise.resolve(post)
+      });
+    })
+    .catch(error => Promise.reject("Не получилось"));
+};
+
 exports.createBlogPost = (post) => {
   return PostModel.create(post)
     .then(post => Promise.resolve(post))

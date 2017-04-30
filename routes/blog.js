@@ -5,7 +5,12 @@ const api = require('../api.js');
 router.get('/', function(req, res) {
   api.getAllPosts()
     .then(posts => {
-      res.render('blog', {title: 'Виктор Колб. Блог', posts: formatDate(posts).reverse()});
+      res.render('blog',
+        {
+          title: 'Виктор Колб. Блог',
+          posts: formatDate(posts).reverse(),
+          admin: req.session.user
+        });
     })
     .catch((error) => console.log(error));
 });
@@ -23,9 +28,40 @@ router.get('/createpost', function(req, res) {
   }
 });
 
+router.get('/edit/:id', (req, res) => {
+  if (!req.session.user) {
+    res.redirect('/')
+  }
+  else {
+    api.getPost(req.params.id)
+      .then(post => {
+        res.render('editpost',
+          {
+            title: 'Редактировать запись',
+            post: post,
+          });
+      })
+      .catch((error) => console.log(error));
+  }
+});
+
+
+router.post('/edit/:id', (req, res) => {
+  if (!req.session.user) {
+    res.redirect('/')
+  }
+  else {
+    api.editPost(req.params.id, req.body)
+      .then(() => {
+        res.redirect('/blog')
+      })
+      .catch((error) => console.log(error));
+  }
+});
+
 function formatDate(posts) {
   posts.forEach(post => {
-    post.posted_formatted = `${post.posted.getDate()}.${post.posted.getMonth()}.${post.posted.getFullYear()}`
+    post.posted_formatted = `${post.posted.getDate()}.${post.posted.getMonth()}.${post.posted.getFullYear()}`;
   });
 
   return posts;
