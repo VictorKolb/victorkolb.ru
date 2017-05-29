@@ -2,6 +2,14 @@ const express = require('express');
 const router = express.Router();
 const api = require('../api.js');
 
+function isAuthenticated(req, res, next) {
+
+  if (req.session.user)
+    return next();
+
+  res.redirect('/login');
+}
+
 router.get('/', function(req, res) {
   api.getAllPosts()
     .then(posts => {
@@ -15,13 +23,8 @@ router.get('/', function(req, res) {
     .catch((error) => console.log(error));
 });
 
-router.post('/createpost', function(req, res) {
-  if (!req.session.user) {
-    res.redirect('/')
-  }
-  else {
-    api.createBlogPost(req.body).then(res.redirect('/blog')).catch(error => res.json(res));
-  }
+router.post('/createpost', isAuthenticated, function(req, res) {
+  api.createBlogPost(req.body).then(res.redirect('/blog')).catch(error => res.json(res));
 });
 
 router.get('/createpost', function(req, res) {
