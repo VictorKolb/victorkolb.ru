@@ -128,3 +128,7 @@ small, .font_small {
     top: 0;
     z-index: -1;
 }
+
+body.index {
+    overflow: hidden;
+}
