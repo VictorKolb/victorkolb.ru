@@ -10,7 +10,7 @@ module.exports = {
       ref  : 'origin/master',
       repo : 'git@github.com:VictorKolb/victorkolb.ru.git',
       path : '/var/www/victorkolb',
-      'post-deploy' : ''
+      'post-deploy' : 'git status'
     },
   }
 };
