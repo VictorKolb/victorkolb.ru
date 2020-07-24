@@ -1,0 +1,58 @@
+:root {
+    --accent: #333;
+    --background: #ddd;
+}
+
+html, body {
+    background: var(--background);
+    color: var(--accent);
+    font-family: monospace;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+}
+
+a {
+    color: var(--accent);
+    font-size: 22px;
+    text-decoration: none;
+    border-bottom: 1px solid var(--accent);
+    transition: .2s;
+}
+
+a:hover {
+    border-bottom: 1px solid transparent;
+}
+
+h1 {
+    font-size: 42px;
+    font-weight: 400;
+    margin-bottom: 8px;
+    margin-top: 0;
+}
+
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    z-index: 2;
+    position: relative;
+}
+
+.wrapper {
+    display: inline-block;
+    text-align: center;
+}
+
+.canvas {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    margin: 0 auto;
+    opacity: .3;
+    z-index: 1;
+}
