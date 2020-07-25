@@ -5,6 +5,8 @@ services:
     restart: unless-stopped
     volumes:
       - ./nginx:/etc/nginx/conf.d
+      - ./data/certbot/conf:/etc/letsencrypt
+      - ./data/certbot/www:/var/www/certbot
       - ./html:/html
     ports:
       - "80:80"
