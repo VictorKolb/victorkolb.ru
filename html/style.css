@@ -1,6 +1,6 @@
 :root {
     --accent: #333;
-    --background: #ddd;
+    --background: #fff;
 }
 
 html, body {
@@ -53,8 +53,8 @@ h1 {
     top: 50%;
     transform: translateY(-50%);
     margin: 0 auto;
-    opacity: .3;
     z-index: 1;
+    opacity: 0.8;
 }
 
 .noise {
